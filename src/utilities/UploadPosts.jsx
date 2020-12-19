@@ -102,7 +102,7 @@ const UploadPosts = () => {
           </Button>
         ) : (
           <Button variant="contained" color="primary" fullWidth>
-            "Loading..."
+            Loading... 
           </Button>
         )}
       </form>
