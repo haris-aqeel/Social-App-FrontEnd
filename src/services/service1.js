@@ -2,10 +2,10 @@ const fetchUsersData = async () => {
 
 
   const usersData = await fetch(
-    "http://cors-anywhere.herokuapp.com/https://smallsocialappbackend.herokuapp.com/userData"
+    "https://cors-anywhere.herokuapp.com/https://smallsocialappbackend.herokuapp.com/userData"
   );
   const getData = await fetch(
-    "http://cors-anywhere.herokuapp.com/https://smallsocialappbackend.herokuapp.com/userPosts"
+    "https://cors-anywhere.herokuapp.com/https://smallsocialappbackend.herokuapp.com/userPosts"
   );
   const resultUsersData = await usersData.json();
   const resultgetData = await getData.json();

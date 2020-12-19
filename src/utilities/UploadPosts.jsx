@@ -41,7 +41,7 @@ const UploadPosts = () => {
 
     try {
       const postFormData = await fetch(
-        "http://cors-anywhere.herokuapp.com/https://smallsocialappbackend.herokuapp.com/userPosts",
+        "https://cors-anywhere.herokuapp.com/https://smallsocialappbackend.herokuapp.com/userPosts",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

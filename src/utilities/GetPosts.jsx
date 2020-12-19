@@ -45,7 +45,7 @@ const GetPosts = () => {
 
   const handleDelete = async (id) => {
     const deleteData = await fetch(
-      "http://cors-anywhere.herokuapp.com/https://smallsocialappbackend.herokuapp.com/userPosts",
+      "https://cors-anywhere.herokuapp.com/https://smallsocialappbackend.herokuapp.com/userPosts",
       {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },

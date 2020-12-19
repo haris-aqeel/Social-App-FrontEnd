@@ -72,7 +72,7 @@ const Login = () => {
     onSubmit: async (values) => {
       try {
         const result = await fetch(
-          "http://cors-anywhere.herokuapp.com/https://smallsocialappbackend.herokuapp.com/login",
+          "https://cors-anywhere.herokuapp.com/https://smallsocialappbackend.herokuapp.com/login",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

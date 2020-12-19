@@ -70,7 +70,7 @@ const Register = () => {
       console.log(values);
       try {
         const result = await fetch(
-          "http://cors-anywhere.herokuapp.com/https://smallsocialappbackend.herokuapp.com/register",
+          "https://cors-anywhere.herokuapp.com/https://smallsocialappbackend.herokuapp.com/register",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
