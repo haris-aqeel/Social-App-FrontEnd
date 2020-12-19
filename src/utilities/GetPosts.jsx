@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const GetPosts = () => {
   const [{ user, postanduser }, dispatch] = useStateValue();
   const [data, setData] = useState([]);
+  const [Loading, setLoading] = useState(true)
 
   const classes = useStyles();
 
@@ -64,9 +65,12 @@ const GetPosts = () => {
 
   useEffect(() => {
     setData(postanduser);
+    setTimeout(() => {
+
+      setLoading(false)
+    }, 2000);
+
   }, [postanduser]);
-
-
 
   return (
     <Paper
@@ -78,51 +82,47 @@ const GetPosts = () => {
         alignItems: "center",
       }}
     >
-      
-      {data && data!==undefined ?  (
-        data.map((curr) => {
+      {data === undefined || Loading === true ? <CircularProgress />
+        : (
+          data?.map((curr) => {
+            return <Card
+              className={classes.root}
+              style={{ minWidth: "300px", width: "500px", margin: "20px 0px" }}
+            >
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    {curr.name[0]}
+                  </Avatar>
+                }
+                action={
+                  user._id === curr.personalId ? (
+                    <IconButton
+                      aria-label="delete"
+                      onClick={() => handleDelete(curr._id)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  ) : undefined
+                }
+                title={curr.email}
+                subheader={curr.time}
+              />
 
+              <CardMedia
+                className={classes.media}
+                image={curr.myFile}
+                title={curr.text}
+              />
 
-        return  <Card
-            className={classes.root}
-            style={{ minWidth: "300px", width: "500px", margin: "20px 0px" }}
-          >
-            <CardHeader
-              avatar={
-                <Avatar aria-label="recipe" className={classes.avatar}>
-                  {curr.name[0] || ""}
-                </Avatar>
-              }
-              action={
-                user._id === curr.personalId ? (
-                  <IconButton
-                    aria-label="delete"
-                    onClick={() => handleDelete(curr._id)}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                ) : undefined
-              }
-              title={curr.email}
-              subheader={curr.time}
-            />
-            
-            <CardMedia
-              className={classes.media}
-              image={curr.myFile}
-              title={curr.text}
-            />
-
-            <CardContent>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {curr.text}
-              </Typography>
-            </CardContent>
-          </Card>;
-        })
-      ) : (
-       "loading"
-      )}
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {curr.text}
+                </Typography>
+              </CardContent>
+            </Card>;
+          })
+        )}
     </Paper>
   );
 };

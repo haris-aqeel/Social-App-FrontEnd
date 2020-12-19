@@ -48,10 +48,9 @@ const UploadPosts = () => {
           body: JSON.stringify(obj),
         }
       );
-
       dispatch({
         type: "Add_PostsAndUser",
-        item: [obj],
+        item: [{...obj, ...user }],
       });
 
       const result = await postFormData.json();

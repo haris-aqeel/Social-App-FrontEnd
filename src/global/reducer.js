@@ -13,21 +13,13 @@ const reducer = (state, action) => {
                 ...state,
                 user: action.user
             }
-        
-        case "Add_Posts": 
-        
-            return{
-
-                ...state,
-                posts: [action.posts, ...state.posts]
-
-            }
+    
             
         case "Add_PostsAndUser": 
 
         return{
                 ...state,
-                postanduser: [...state.postanduser, ...action.item ]
+                postanduser: [...action.item, ...state.postanduser ]
             }
 
 
